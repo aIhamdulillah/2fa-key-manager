@@ -1,5 +1,4 @@
 # 2fa-key-manager
-A simple nodejs program to add and remove manual keys to generate totp and hotp 2fa codes
-
-Uses speakeasy library
-https://www.npmjs.com/package/speakeasy
+A simple nodejs 2fa authentication console app
+Allows you to add accounts (account name and a manual 2fa key), remove accounts and generate either TOTP or HOTP codes with a given encoding type using the account.
+Uses speakeasy library - https://www.npmjs.com/package/speakeasy
