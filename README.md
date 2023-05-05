@@ -6,4 +6,4 @@ Functionality:
 - Remove accounts
 - Generate either TOTP or HOTP codes with a given encoding type using the account
 
-Uses  the [Speakeasy](https://www.npmjs.com/package/speakeasy) library
+Uses the [Speakeasy](https://www.npmjs.com/package/speakeasy) library
