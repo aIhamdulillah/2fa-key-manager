@@ -1,5 +1,5 @@
 # 2fa-key-manager
-A simple nodejs 2fa authentication console app.
+A simple nodejs 2fa authentication console app
 
 Functionality:
 - Add accounts (account name and a manual 2fa key) 
