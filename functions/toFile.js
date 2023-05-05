@@ -4,20 +4,19 @@ const filePath = "accounts.json";
 /**
  * This file exports two functions for writing and retrieving account information from a JSON file.
  * @function writeToFile
- * @description Adds a new account and its 2FA key to an existing JSON file, or creates a new file if none exists.
- * @param {string} account - The name of the account being added.
- * @param {string} key - The 2FA key associated with the account.
- * @returns {void}
- * 
- * @function writeToFile
  * @description Adds a new account and its 2FA key to an existing JSON file or creates a new file if none exists. Returns a Promise that resolves when the operation is successful, and rejects with an error if there's a problem.
  * @param {string} account - The name of the account being added.
  * @param {string} key - The 2FA key associated with the account.
  * @returns {Promise<void>}
+ * 
+ * @function removeFromFile
+ * @description Removes an account and its 2FA key from an existing JSON file. Returns a Promise that resolves when the operation is successful, and rejects with an error if the account is not found or there's a problem with the file.
+ * @param {string} account - The name of the account being removed.
+ * @returns {Promise<void>}
  *
  * @function getAllCodes
- * @description Retrieves all accounts and their associated 2FA keys from an existing JSON file, if one exists.
- * @returns {Object} Returns a JSON object containing all accounts and their associated 2FA keys.
+ * @description Retrieves all accounts and their associated 2FA keys from an existing JSON file, if one exists. Returns a JSON object containing all accounts and their associated 2FA keys.
+ * @returns {Object}
  */
 
 const writeToFile = (account, key) => {
