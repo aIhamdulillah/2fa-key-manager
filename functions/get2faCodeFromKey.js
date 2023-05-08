@@ -2,13 +2,13 @@ const crypto = require("crypto");
 const { base32Decode } = require("./base32Decode")
 
 /**
-    @function getTotpCode
-    @description Generates a 2FA code using the provided manual key and the Time-based One-time Password (TOTP) algorithm.
-    @param {string} key - The 2FA key used for generating codes.
-    @param {number} [timeStep=30] - The time step interval in seconds used for generating codes (default is 30 seconds).
-    @param {number} [digits=6] - The number of digits in the generated code (default is 6).
-    @param {string} [encoding="base32"] - The encoding type of the key (default is "base32").
-    @returns {string} Returns the generated 2FA code as a string.
+ * @function getTotpCode
+ * @description Generates a 2FA code using the provided manual key and the Time-based One-time Password (TOTP) algorithm.
+ * @param {string} key - The 2FA key used for generating codes.
+ * @param {number} [timeStep=30] - The time step interval in seconds used for generating codes (default is 30 seconds).
+ * @param {number} [digits=6] - The number of digits in the generated code (default is 6).
+ * @param {string} [encoding="base32"] - The encoding type of the key (default is "base32").
+ * @returns {string} Returns the generated 2FA code as a string.
 */
 
 const getTotpCode = (key, timeStep = 30, digits = 6, encoding = 'base32') => {
@@ -36,14 +36,14 @@ const getTotpCode = (key, timeStep = 30, digits = 6, encoding = 'base32') => {
 }
 
 /**
-    @function getHotpCode
-    @description Generates a 2FA code using the provided manual key and the HMAC-based One-time Password (HOTP) algorithm.
-    @param {string} key - The 2FA key used for generating codes.
-    @param {number} [counter=0] - The counter value used for generating the code (default is 0).
-    @param {number} [digits=6] - The number of digits in the generated code (default is 6).
-    @param {string} [encoding="base32"] - The encoding type of the key (default is "base32").
-    @returns {string} Returns the generated 2FA code as a string.
-*/
+ * @function getHotpCode
+ * @description Generates a 2FA code using the provided manual key and the HMAC-based One-time Password (HOTP) algorithm.
+ * @param {string} key - The 2FA key used for generating codes.
+ * @param {number} [counter=0] - The counter value used for generating the code (default is 0).
+ * @param {number} [digits=6] - The number of digits in the generated code (default is 6).
+ * @param {string} [encoding="base32"] - The encoding type of the key (default is "base32").
+ * @returns {string} Returns the generated 2FA code as a string.
+ */
 
 const getHotpCode = (key, counter = 0, digits = 6, encoding = 'base32') => {
     let decodedKey;
