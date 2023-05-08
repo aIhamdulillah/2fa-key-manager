@@ -1,5 +1,5 @@
 const readline = require("readline");
-const { getTotpCodeSpeakeasy, getHotpCodeSpeakeasy, getTotpCode } = require("./functions/get2faCodeFromKey.js");
+const { getTotpCode, getHotpCode } = require("./functions/get2faCodeFromKey.js");
 const { getAllCodes, writeToFile, removeFromFile } = require("./functions/toFile.js");
 
 const r1 = readline.createInterface({
@@ -42,7 +42,7 @@ const commandTable = {
 
         const key = dataTable[args]
 
-        const code = getHotpCodeSpeakeasy(key);
+        const code = getHotpCode(key);
 
         if (!code) return console.log("- Error while generating Hotp code");
 
