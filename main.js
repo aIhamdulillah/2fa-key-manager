@@ -1,5 +1,5 @@
 const readline = require("readline");
-const { getTotpCode, getHotpCode } = require("./functions/get2faCodeFromKey.js");
+const { getTotpCodeSpeakeasy, getHotpCodeSpeakeasy, getTotpCode } = require("./functions/get2faCodeFromKey.js");
 const { getAllCodes, writeToFile, removeFromFile } = require("./functions/toFile.js");
 
 const r1 = readline.createInterface({
@@ -10,11 +10,15 @@ const r1 = readline.createInterface({
 let dataTable = {}
 dataTable = getAllCodes();
 
+// This program is mainly made to work with ROBLOX, you can modify it however you like if for whatever reason it doesn't work elsewhere.
+// ROBLOX timestep is 30, and the encoding type is base32 (the defaults for the function)
+
 const commandTable = {
     // Display all commands
     'help': () => {
         console.log(`- gtc <account> (gets account totp code)\n- ghc <account> (gets account hotp code)\n- save <account> <key> (saves key under that account name)\n- remove <account> (removes account and key from file)\n- view (displays all accounts)\n- help (this command)`)
     },
+
     // Get totp code
     'gtc': (args) => {
         if (!dataTable.hasOwnProperty(args)) {
@@ -29,6 +33,7 @@ const commandTable = {
 
         return console.log(`- ${code}`);
     },
+
     // Get key code
     'ghc': (args) => {
         if (!dataTable.hasOwnProperty(args)) {
@@ -37,12 +42,13 @@ const commandTable = {
 
         const key = dataTable[args]
 
-        const code = getHotpCode(key);
+        const code = getHotpCodeSpeakeasy(key);
 
         if (!code) return console.log("- Error while generating Hotp code");
 
         return console.log(`- ${code}`);
     },
+
     // Save manual key as account
     'save': async (args) => {
         const [account, key] = args.split(' ')
@@ -51,10 +57,13 @@ const commandTable = {
             await writeToFile(account, key)
             console.log(`- Successfully added account '${account}'`)
             dataTable = getAllCodes();
+            
+            const code = getTotpCode(key);
         } catch (error) {
             console.log(`- There was an error while writing to file. ${err}`)
         }
     },
+
     // Remove account
     'remove': async (args) => {
         try {
@@ -65,6 +74,7 @@ const commandTable = {
             console.log(`- There was an error while removing from file. ${error}`);
         }
     },
+    
     // View all accounts
     'view': () => {
         const accounts = Object.keys(dataTable);
