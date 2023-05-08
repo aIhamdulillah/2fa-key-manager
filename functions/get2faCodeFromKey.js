@@ -47,13 +47,16 @@ const getHotpCode = (key, counter = 0, digits = 6, encoding = 'base32') => {
     let decodedKey;
 
     if (encoding == 'base32') {
-        decodedKey = base32.decode(key);
+        decodedKey = base32Decode(key);
     } else {
         decodedKey = Buffer.from(key, 'base64');
     }
 
     const message = Buffer.alloc(8);
-    message.writeUIntBE(counter, 0, 8);
+    const counterHigh = Math.floor(counter / 2 ** 32);
+    const counterLow = counter & 0xffffffff;
+    message.writeUInt32BE(counterHigh, 0);
+    message.writeUInt32BE(counterLow, 4);
 
     const hash = crypto.createHmac('sha1', decodedKey).update(message).digest();
     const offset = hash[hash.length - 1] & 0xf;
