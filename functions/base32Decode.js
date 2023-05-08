@@ -1,9 +1,9 @@
 /**
-    This module exports a function for decoding a base32 string.
-    @function base32Decode
-    @param {string} base32String - The base32-encoded string to be decoded.
-    @returns {Buffer} Returns a Buffer object containing the decoded data.
-    @throws {Error} Throws an error if the provided string is not a valid base32 string.
+ * This module exports a function for decoding a base32 string.
+ * @function base32Decode
+ * @param {string} base32String - The base32-encoded string to be decoded.
+ * @returns {Buffer} Returns a Buffer object containing the decoded data.
+ * @throws {Error} Throws an error if the provided string is not a valid base32 string.
 */
 
 const base32Decode = (base32String) => {
