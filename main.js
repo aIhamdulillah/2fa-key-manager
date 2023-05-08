@@ -51,8 +51,6 @@ const commandTable = {
             await writeToFile(account, key)
             console.log(`- Successfully added account '${account}'`)
             dataTable = getAllCodes();
-            
-            const code = getTotpCode(key);
         } catch (error) {
             console.log(`- There was an error while writing to file. ${err}`)
         }
