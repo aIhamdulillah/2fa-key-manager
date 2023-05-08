@@ -39,6 +39,7 @@ const writeToFile = (account, key) => {
  * @param {string} account - The name of the account being removed.
  * @returns {void}
  */
+ 
 const removeFromFile = (account) => {
     return new Promise((resolve, reject) => {
         // Load existing data, if any
@@ -74,6 +75,7 @@ const removeFromFile = (account) => {
  * @description Retrieves all accounts and their associated 2FA keys from an existing JSON file, if one exists.
  * @returns {Object} Returns a JSON object containing all accounts and their associated 2FA keys.
  */
+ 
 const getAllCodes = () => {
     // Read data from the file, if it exists
     let data = {};
